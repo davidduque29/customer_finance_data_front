@@ -1,0 +1,136 @@
+<div id="loginbox" style="margin-top:50px;" class="mainbox" class="container">
+    <div class="panel panel-info" >
+      <div class="panel-heading">
+          <div class="panel-title"><H1>Listado clientes </H1></div>
+      </div>  
+    <div class="row">
+      <div class="col-md-12">
+          <table class="table table-hover mt-5">
+            <thead>
+               <tr>
+                 <th>id</th>
+                 <th>tipoIdentificacion</th>
+                 <th>Identificacion</th>
+                 <th>primerNombre</th>
+                 <th>segundoNombre</th>
+                 <th>primerApellido</th>
+                 <th>segundoApellido</th>
+                 <th>Email</th>
+                 <th>fechaNacimiento</th>
+                 <th>fechaCreacion</th>
+                 <th>fechaModificacion</th>
+               </tr>
+            </thead>
+            <tbody> 
+<!-- Se espera que los campos de la tabla coincidan con los nombres 
+    de las propiedades de la clase entidad de Java utilizada en este 
+    código.@Table(name = "clientes") 
+       @Column(name = "tipo_identificacion", nullable = false, columnDefinition = "VARCHAR(255) COMMENT 'Número de identificación'")
+       private String tipoIdentificacion; 
+
+       <td>{{cliente.tipoIdentificacion}}</td> 
+ (ANGULAR-TABLA)           {{cliente.numeroIdentificacion}} 
+                      ES IGUAL A
+ (JAVA -CLASE @Table) private String numeroIdentificacion;
+  Sino el resultado de la lista no aparece    -->
+              <tr *ngFor="let cliente of clientes">
+                <td>{{cliente.id}}</td>
+                <td>{{cliente.tipoIdentificacion}}</td>
+                <td>{{cliente.numeroIdentificacion}}</td>
+                <td>{{cliente.primerNombre}}</td>
+                <td>{{cliente.segundoNombre}}</td>
+                <td>{{cliente.primerApellido}}</td>
+                <td>{{cliente.segundoApellido}}</td>
+                <td>{{cliente.correoElectronico}}</td>
+                <td>{{cliente.fechaNacimiento}}</td>
+                <td>{{cliente.fechaCreacion}}</td>
+                <td>{{cliente.fechaModificacion}}</td>
+                <td>
+                  <button class="btn btn-danger btn-sm" (click)="delete(cliente.id)">
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form (ngSubmit)="save()" [formGroup]="requestForm">
+          <div class="panel-title"><H1>Registro clientes</H1></div>
+          <label>
+            <p class="label-txt">Tipo de Identificacion</p>
+            <input type="text" class="input" formControlName="tipo_identificacion">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label>
+            <p class="label-txt">Identificacion</p>
+            <input type="number" class="input" formControlName="numero_identificacion">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label>
+            <p class="label-txt">Primer nombre</p>
+            <input type="text" class="input" formControlName="primer_nombre">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label>
+            <p class="label-txt">Segundo nombre</p>
+            <input type="text" class="input" formControlName="segundo_nombre">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label>
+            <p class="label-txt">Primer apellido</p>
+            <input type="text" class="input" formControlName="primer_apellido">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label>
+            <p class="label-txt">Segundo apellido</p>
+            <input type="text" class="input" formControlName="segundo_apellido">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label>
+            <p class="label-txt">Correo electronico</p>
+            <input type="email" class="input" placeholder="usuario@quickfinance.com" formControlName="correo_electronico">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label>
+            <p class="label-txt">Fecha Nacimiento</p>
+            <input type="date" class="input" formControlName="fecha_nacimiento">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label>
+            <p class="label-txt">Fecha Creacion</p>
+            <input type="datetime-local" class="input" formControlName="fecha_creacion">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label>
+            <p class="label-txt">Fecha Modificacion</p>
+            <input type="text" class="input" formControlName="fechaModificacion">
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <button type="submit">Registrar</button>
+        </form>
+      </div>
+      </div>
+    </div>
